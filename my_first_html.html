@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400,500,700,900&display=swap"
+        rel="stylesheet">
+
+
+    <!-- Bootstrap CSS -->
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+        * {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
+
+        .wrap {
+            width: 400px;
+            margin: 10px auto;
+        }
+
+        .product-image{
+            padding-top: 50px;
+        }
+
+
+
+        #product-name {
+            padding-top: 20px;
+            font-size: 40px;
+            font-weight: 700;
+
+        }
+
+        #product-price {
+            font-size: 15px;
+            margin-left: 40px;
+            font-weight: 400;
+
+        }
+
+        #product-description {
+            font-size: 15px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+
+        }
+
+        .order-button {
+            width: 200px;
+            background-color: rgb(115, 20, 238);
+            color: rgb(255,255,255);
+            border-radius:10px;
+            text-align: center;
+            font-size: 15px;
+            cursor: pointer;
+            padding: 15px 0;
+            
+        }
+
+
+        .button-wrap{
+            width: 200px;
+            margin: auto;
+        }
+    </style>
+
+    <script>
+        function checkEmpty()
+        {
+            let alertMessage = ""
+            alertMessage += checkInput();
+            if(alertMessage == "")
+            {
+
+                alertMessage += checkProductNumber();
+                if(alertMessage == "") alertMessage = '주문 완료!';
+            }
+           
+            alert(alertMessage);
+
+
+            
+
+            
+        }
+
+        function checkProductNumber(){
+
+            let alertMessage = ""
+            if($('#inputGroupSelect01 option:selected').val() == "")
+            {
+                alertMessage += '수량을 입력하세요.';
+            }
+            return alertMessage;
+        }
+        function checkInput(){
+
+            let alertMessage = ""
+            if($('#input-name-id').val() == "")
+            {
+                alertMessage += '이름';
+            }
+
+            if($('#input-address-id').val() == "")
+            {
+                if(alertMessage != "") alertMessage += ', 주소';
+                else alertMessage += '주소';
+            }
+
+            if($('#input-number-id').val() == "")
+            {
+                if(alertMessage != "") alertMessage += ', 전화번호';
+                else alertMessage += '전화번호';
+            }
+
+          
+
+
+            if(alertMessage != "")
+            {
+                alertMessage += '를 입력하세요';
+            } 
+
+            return alertMessage;
+        }
+
+       
+
+        
+    </script>
+
+    <title>경진코딩클럽 | 1주차 숙제</title>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="product-image"> 
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQae9U2Jc5Pt4wQYs6e6TADJGwugbfewGOPAyx6Zb_B5FpyXtx4&usqp=CAU"
+                width="400px" />
+        </div>
+
+        <div id="product-name"> 강아지 우산 <span id="product-price">가격: 15,000원/개</span></div>
+
+
+        <div id="product-description">
+            비 오는 날에도 더 이상 댕댕이의 산책을 미루지 마세요!
+        </div>
+
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span  class="input-group-text">주문자 이름</span>
+            </div>
+            <input id="input-name-id" class="form-control" aria-label="name"></input>
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">수량</label>
+            </div>
+            <select class="custom-select" id="inputGroupSelect01">
+                <option value="">---수량을 선택하세요---</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </div>
+
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span  class="input-group-text">주소</span>
+            </div>
+            <input id="input-address-id" class="form-control" aria-label="address"></input>
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">전화번호</span>
+            </div>
+            <input id="input-number-id" class="form-control" aria-label="address"></input>
+        </div>
+
+        <div class="button-wrap">
+            <button id="order-button-id" class="order-button" onclick="checkEmpty()" >주문하기</button>
+        </div>
+
+
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
